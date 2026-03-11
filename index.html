@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rajendra Prasad | Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root { --primary: #00ffcc; --bg: #0b1a1a; --card: #142626; --text: #ffffff; }
+        body { margin: 0; font-family: 'Poppins', sans-serif; background: var(--bg); color: var(--text); scroll-behavior: smooth; }
+        
+        nav { display: flex; justify-content: center; padding: 20px; background: rgba(0,0,0,0.5); backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 1000; gap: 30px; }
+        nav a { color: white; text-decoration: none; font-size: 0.9rem; transition: 0.3s; }
+        nav a:hover { color: var(--primary); }
+
+        /* Hero Section */
+        .hero { text-align: center; padding: 120px 20px; background: radial-gradient(circle, #122d2d 0%, #0b1a1a 80%); }
+        .profile-img { width: 180px; height: 180px; border-radius: 50%; border: 4px solid var(--primary); box-shadow: 0 0 30px var(--primary); margin-bottom: 20px; object-fit: cover; }
+        h1 { font-size: 3.5rem; margin: 0; }
+        h1 span { color: var(--primary); }
+        .typing-text { font-size: 1.5rem; color: #888; margin: 15px 0; min-height: 30px; }
+
+        /* Contact Info & Social Icons */
+        .contact-info { margin: 20px 0; font-size: 1.1rem; color: #ccc; }
+        .contact-info i { color: var(--primary); margin-right: 10px; }
+        .social-links { margin: 25px 0; }
+        .social-links a { color: white; font-size: 2rem; margin: 0 15px; transition: 0.3s; }
+        .social-links a:hover { color: var(--primary); transform: translateY(-5px); display: inline-block; }
+
+        /* Resume Button */
+        .resume-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 30px;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: 0.4s;
+        }
+        .resume-btn:hover { background: var(--primary); color: var(--bg); }
+
+        .container { max-width: 1100px; margin: auto; padding: 20px; }
+        h2.section-title { text-align: center; font-size: 2.5rem; margin: 80px 0 40px; color: var(--primary); text-transform: uppercase; letter-spacing: 2px; }
+
+        /* Square Card Grid for Skills */
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 20px; }
+        .skill-card { 
+            background: var(--card); padding: 30px 20px; border-radius: 15px; text-align: center; cursor: pointer; transition: 0.3s; border: 1px solid rgba(255,255,255,0.05);
+        }
+        .skill-card:hover { transform: translateY(-10px); border-color: var(--primary); }
+        .skill-card i { font-size: 3rem; color: var(--primary); margin-bottom: 15px; }
+
+        .details-box { display: none; background: rgba(0,0,0,0.3); margin-top: 20px; padding: 20px; border-radius: 10px; border: 1px solid var(--primary); text-align: left; animation: fadeIn 0.5s; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        /* Tables & Projects */
+        .project-card { background: var(--card); border-radius: 20px; padding: 30px; margin-bottom: 30px; border-left: 8px solid var(--primary); }
+        .info-card { background: var(--card); padding: 30px; border-radius: 20px; margin-bottom: 20px; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { padding: 15px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        th { color: var(--primary); }
+        
+        footer { text-align: center; padding: 60px; border-top: 1px solid #1a3333; margin-top: 50px; }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="#home">HOME</a>
+    <a href="#about">ABOUT</a>
+    <a href="#skills">SKILLS</a>
+    <a href="#projects">PROJECTS</a>
+    <a href="#education">EDUCATION</a>
+</nav>
+
+<section class="hero" id="home">
+    <img src="{{ url_for('static', filename='images/profile.jpg') }}" alt="Rajendra Prasad" class="profile-img">
+    <h1>Hi! I am <span>Rajendra Prasad</span></h1>
+    <div class="typing-text" id="typewriter"></div>
+    
+    <div class="contact-info">
+        <p><i class="fas fa-phone"></i> +91 6281496528</p>
+        <p><i class="fas fa-envelope"></i> prasadtamarana11@gmail.com</p>
+    </div>
+
+    <div class="social-links">
+        <a href="http://www.linkedin.com/in/rajendra-prasad-tamarana-7473a9330" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/prasadtamarana" target="_blank"><i class="fab fa-github"></i></a>
+    </div>
+
+    <a href="{{ url_for('static', filename='resume.pdf') }}" class="resume-btn" target="_blank">
+        <i class="fas fa-file-download"></i> VIEW RESUME
+    </a>
+</section>
+
+<div class="container">
+    
+    <section id="about">
+        <h2 class="section-title">ABOUT MYSELF</h2>
+        <div class="info-card" style="text-align: center;">
+            <p>Aspiring Data Scientist with strong skills in Machine Learning, Deep Learning, and Data Analysis. Proficient in Python, SQL, and 
+Power BI. Seeking to leverage hands-on project experience in AI and ML to solve real-world problems and contribute to datadriven decision-making.</p>
+        </div>
+    </section>
+
+    <section id="skills">
+        <h2 class="section-title">TECHNICAL SKILLS</h2>
+        <div class="skills-grid">
+            <div class="skill-card" onclick="toggleDetails('python-details')"><i class="fab fa-python"></i><br><span>Python</span></div>
+            <div class="skill-card" onclick="toggleDetails('machine learning-details')"><i class="fas fa-brain"></i><br><span>Machine Learning</span></div>
+            <div class="skill-card" onclick="toggleDetails('deep learning-details')"><i class="fas fa-network-wired"></i><br><span>Deep Learning</span></div>
+            <div class="skill-card" onclick="toggleDetails('nlp-details')"><i class="fas fa-robot"></i><br><span>NLP</span></div>
+            <div class="skill-card" onclick="toggleDetails('viz-details')"><i class="fas fa-chart-line"></i><br><span>Visualization</span></div>
+            <div class="skill-card" onclick="toggleDetails('sql-details')"><i class="fas fa-database"></i><br><span>SQL</span></div>
+        </div>
+
+        <div id="python-details" class="details-box"><strong>Python:</strong> NumPy, Pandas, Functions, Loops,Data Types,Data Structures,Scikit-Learn,Matplotlib,Seaborn.</div>
+        <div id="machine learning-details" class="details-box"><strong>Machine Learning:</strong> Regression(Linear, Logistic), Classification(SVM, Decision Trees, Random Forest),Clustering(K-Means, Hierarchical), Ensemble Methods(Bagging, Boosting), Model Evaluation (Confusion Matrix, ROC, F1-score, AUC), Hypothesis Testing, Cross-Validation.</div>
+        <div id="deep learning-details" class="details-box"><strong>Deep Learning:</strong> Neural Networks, CNN, RNN, LSTM, Activation Functions, Loss Functions, Cross-Entropy, Optimization, TensorFlow, Keras.</div>
+        <div id="nlp-details" class="details-box"><strong>NLP:</strong> Tokenization, Lemmatization, Sentiment Analysis, TF-IDF.</div>
+        <div id="viz-details" class="details-box"><strong>Data Visualization:</strong> Matplotlib, Seaborn, Power BI.</div>
+        <div id="sql-details" class="details-box"><strong>SQL:</strong> Joins, Table Creation, Queries.</div>
+    </section>
+
+    <section id="projects">
+        <h2 class="section-title">PROJECTS</h2>
+        <div class="project-card">
+            <h3>Crack and Rust Detection</h3>
+            <p>Computer vision system identifying defects in structural images using CNN and OpenCV.</p>
+        </div>
+        <div class="project-card">
+            <h3>Real-Time Sign Language Detection</h3>
+            <p>Hand gesture recognition using MediaPipe and CNN to aid communication.</p>
+        </div>
+        <div class="project-card">
+            <h3>Customer Churn Prediction</h3>
+            <p>ML application predicting customer retention based on demographics and service data.</p>
+        </div>
+    </section>
+
+    <section id="education">
+        <h2 class="section-title">EDUCATION</h2>
+        <div class="info-card">
+            <table>
+                <tr><th>Education</th><th>Branch</th><th>Result</th><th>Year</th></tr>
+                <tr><td>B.Sc</td><td>Computer Science</td><td>70.0%</td><td>2021-2024</td></tr>
+                <tr><td>Intermediate</td><td>MPC</td><td>78.7%</td><td>2019-2021</td></tr>
+                <tr><td>SSC</td><td>10th</td><td>90.0%</td><td>2018-2019</td></tr>
+            </table>
+        </div>
+    </section>
+
+</div>
+
+<footer>
+    <p>Contact: +91 6281496528 | prasadtamarana11@gmail.com</p>
+    <p>&copy; 2026 Rajendra Prasad | Built with Flask</p>
+</footer>
+
+<script>
+    const text = "I am a Data Scientist & AI Enthusiast";
+    let index = 0;
+    function type() {
+        if (index < text.length) {
+            document.getElementById("typewriter").innerHTML += text.charAt(index);
+            index++;
+            setTimeout(type, 100);
+        }
+    }
+    window.onload = type;
+
+    function toggleDetails(id) {
+        const boxes = document.querySelectorAll('.details-box');
+        boxes.forEach(box => { if(box.id !== id) box.style.display = 'none'; });
+        const target = document.getElementById(id);
+        target.style.display = (target.style.display === 'block') ? 'none' : 'block';
+    }
+</script>
+</body>
+</html>
